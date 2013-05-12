@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+*{
+	margin:0;
+	padding:0;
+}
+
+#sortCanvas{
+    float:left;
+	border: 1px solid #000066;
+}
+
+#bubbleSort{
+	margin:0px 0px 0px 10px;
+	float:left;
+	width:70px;
+	border: 1px solid;
+	cursor: pointer;
+}

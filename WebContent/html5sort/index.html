@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>html5 canvas test</title>
+
+<link rel="stylesheet" href="css/main.css"></link>
+
+
+</head>
+
+<body>
+
+	<p>html5 排序展示</p>
+
+	<canvas id="sortCanvas" width="1200" height="500"></canvas>
+
+	<div id="bubbleSort">冒泡排序</div>
+
+	<script type="text/javascript">
+		var cxt;
+
+		var c = document.getElementById("sortCanvas");
+		cxt = c.getContext("2d");
+		cxt.fillStyle = "#FF0000";
+
+		var a = new Array();
+		for ( var i = 0; i < 20; i++) {
+			a[i] = getRandomNum(500);
+			cxt.fillRect(0 + 50 * i, 500 - a[i], 30, a[i]);
+		}
+
+		function fillRect(t) {
+			if (a[t] > a[t + 1]) {
+				cxt.clearRect(0 + 50 * t, 500 - a[t], 30, a[t]);
+				cxt.clearRect(0 + 50 * (t + 1), 500 - a[t + 1], 30, a[t + 1]);
+				temp = a[t];
+				a[t] = a[t + 1];
+				a[t + 1] = temp;
+				cxt.fillRect(0 + 50 * t, 500 - a[t], 30, a[t]);
+				cxt.fillRect(0 + 50 * (t + 1), 500 - a[t + 1], 30, a[t + 1]);
+			}
+
+		}
+		function getRandomNum(base) {
+			return Math.floor(Math.random() * base);
+		}
+
+		var bs = document.getElementById("bubbleSort");
+		bs.onclick = function bubbleSort() {
+
+			var k = 0;
+			var x = 0;
+			for ( var i = 0; i < 20; i++) {
+				for ( var j = 0; j < 20 - i; j++) {
+					k++;
+					window.setTimeout("fillRect(" + j + ")", 500 * k);
+				}
+
+			}
+		}
+	</script>
+</body>
+</html>
